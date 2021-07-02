@@ -9,32 +9,12 @@ import {
   FlatList,
   Modal,
   LogBox,
-  useEffect,
 } from 'react-native';
 
 import Header from './components/Header';
 
-import * as Font from 'expo-font';
-import AppLoading from 'expo-app-loading';
-
 export default function App() {
   
-  const [fontLoaded, setFontLoaded] = useState('false');
-  
-  useEffect(() => {
-    if (!fontLoaded){
-      loadFont();
-    }
-  });
-
-  const loadFont = async () => {
-    await Font.loadAsync({
-      'Quicksand': require ('..assets/fonts/Quicksand-Medium.ttf'),
-    });
-
-    setFontLoaded(true);
-  }
-
   const [inputText, setInputText] = useState('');
   const [inputError, setInputError] = useState('');
   const [itemList, setItemList] = useState([]);
@@ -82,10 +62,6 @@ export default function App() {
   const handleModal = id => {
     setItemSelected(itemList.find(item => item.id === id));
     setModalVisible(true);
-  }
-
-  if (!dataLoaded) {
-    return <AppLoading />
   }
 
   return (
