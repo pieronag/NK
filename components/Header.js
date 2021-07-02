@@ -5,25 +5,14 @@ import {
   View,
 } from 'react-native';
 
-import { useFonts } from 'expo-font';
-import { AppLoading } from 'expo';
-
 const Header = () => {
-    
-  const [fontLoaded] = useFonts ({
-    'Quicksand-Medium': require ('./assets/fonts/Quicksand-Medium.ttf'),
-  });
   
-  if (!fontLoaded) {
-    return <AppLoading />
-  } else {
   return (
       <View style={styles.header}>
         <Text style={styles.titulo}>Nutricionista Katherine</Text>
       </View>
     )
 }
-};
 
 const styles = StyleSheet.create({
   header: {
@@ -35,7 +24,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 85,
     color: 'white',
-    fontFamily: 'Quicksand-Medium',
+    fontFamily: 'Quicksand',
   },
 })
 

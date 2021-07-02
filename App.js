@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 
 import Header from './components/Header';
+import {useFonts} from expo-font;
+import Quicksand from './assets/fonts/Quicksand-Regular.ttf';
 
 export default function App() {
   
@@ -64,6 +66,12 @@ export default function App() {
     setModalVisible(true);
   }
 
+  const [loaded]=useFonts({Quicksand,})
+
+  if(!loaded){
+    return <Text>Font is Loading</Text>
+  }
+  
   return (
     <View style={styles.screen}>
       <Header />
@@ -130,7 +138,6 @@ export default function App() {
         </Modal>
         <StatusBar style="auto" />
       </View>
-      
     </View>
   );
 }
