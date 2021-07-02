@@ -11,6 +11,11 @@ import {
   LogBox,
 } from 'react-native';
 
+import Header from './components/Header';
+
+import * as Font from 'expo-font';
+import {AppLoading} from 'expo';
+
 export default function App() {
   const [inputText, setInputText] = useState('');
   const [inputError, setInputError] = useState('');
@@ -63,9 +68,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.header}>
-        <Text style={styles.titulo}>Nutricionista Katherine</Text>
-      </View>
+      <Header />
       <View style= {styles.screen}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -142,16 +145,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 30,
     paddingRight: 30,
-  },
-  header: {
-    height: 130,
-    backgroundColor: '#f1afbb',
-  },
-  titulo: {
-    fontSize: 30,
-    textAlign: 'center',
-    paddingTop: 85,
-    color: 'white',
   },
   inputContainer: {
     padding: 30,
