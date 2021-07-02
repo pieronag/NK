@@ -9,18 +9,31 @@ import {
   FlatList,
   Modal,
   LogBox,
+  useEffect,
 } from 'react-native';
 
 import Header from './components/Header';
 
-import { useFonts } from 'expo-font';
+import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
   
-  const [dataLoaded] = useFonts({
-    'Quicksand': require('./assets/fonts/Quicksand-Medium.ttf'),
-  })
+  const [fontLoaded, setFontLoaded] = useState('false');
+  
+  useEffect(() => {
+    if (!fontLoaded){
+      loadFont();
+    }
+  });
+
+  const loadFont = async () => {
+    await Font.loadAsync({
+      'Quicksand': require ('..assets/fonts/Quicksand-Medium.ttf'),
+    });
+
+    setFontLoaded(true);
+  }
 
   const [inputText, setInputText] = useState('');
   const [inputError, setInputError] = useState('');
@@ -166,6 +179,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: 230,
     fontSize: 15,
+    fontFamily: 'Quicksand',
   },
   inputError: {
     color: 'red',
