@@ -5,10 +5,7 @@ import {
   View,
 } from 'react-native';
 
-import * as Font from 'expo-font';
-
 const Header = () => {
-    
     return (
       <View style={styles.header}>
         <Text style={styles.titulo}>Nutricionista Katherine</Text>

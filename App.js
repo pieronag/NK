@@ -13,10 +13,15 @@ import {
 
 import Header from './components/Header';
 
-import * as Font from 'expo-font';
-import {AppLoading} from 'expo';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
+  
+  const [dataLoaded] = useFonts({
+    'Quicksand': require('./assets/fonts/Quicksand-Medium.ttf'),
+  })
+
   const [inputText, setInputText] = useState('');
   const [inputError, setInputError] = useState('');
   const [itemList, setItemList] = useState([]);
@@ -64,6 +69,10 @@ export default function App() {
   const handleModal = id => {
     setItemSelected(itemList.find(item => item.id === id));
     setModalVisible(true);
+  }
+
+  if (!dataLoaded) {
+    return <AppLoading />
   }
 
   return (
